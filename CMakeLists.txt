@@ -7,7 +7,11 @@ find_package(raylib 2.0 REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp
         grid.cpp
-        colors.cpp)
+        colors.cpp
+        position.cpp
+        block.cpp
+        block.h
+        blocks.cpp)
 target_link_libraries(${PROJECT_NAME} raylib)
 
 set(resources_list)

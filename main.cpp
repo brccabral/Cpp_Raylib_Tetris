@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include "block.h"
 #include "grid.h"
 
 int main()
@@ -9,9 +10,8 @@ int main()
     constexpr int screenHeight = 600;
 
     Grid grid;
-    grid.grid[0][0] = 1;
-    grid.grid[3][5] = 4;
-    grid.grid[17][8] = 7;
+
+    auto block = LBlock();
 
     InitWindow(screenWidth, screenHeight, "Tetris");
     SetTargetFPS(60);
@@ -22,6 +22,7 @@ int main()
         ClearBackground(darkBlue);
 
         grid.Draw();
+        block.Draw();
 
         EndDrawing();
     }

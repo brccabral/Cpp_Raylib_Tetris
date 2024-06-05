@@ -14,7 +14,7 @@ public:
 
     bool gameOver = false;
     int score = 0;
-    Music music;
+    Music music = {};
 
 private:
 
@@ -33,4 +33,6 @@ private:
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    Sound rotateSound = {};
+    Sound clearSound = {};
 };

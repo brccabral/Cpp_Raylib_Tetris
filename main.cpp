@@ -1,6 +1,18 @@
-#include <random>
 #include <raylib.h>
 #include "game.h"
+
+double lastUpdateTime = 0;
+
+bool EventTriggered(const double interval)
+{
+    const double currentTime = GetTime();
+    if (currentTime - lastUpdateTime >= interval)
+    {
+        lastUpdateTime = currentTime;
+        return true;
+    }
+    return false;
+}
 
 int main()
 {
@@ -17,7 +29,10 @@ int main()
     while (!WindowShouldClose())
     {
         game.handleInput();
-        game.moveBlockDown();
+        if (EventTriggered(0.3))
+        {
+            game.moveBlockDown();
+        }
 
         BeginDrawing();
         ClearBackground(darkBlue);

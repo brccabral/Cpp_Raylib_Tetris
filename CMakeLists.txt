@@ -10,8 +10,8 @@ add_executable(${PROJECT_NAME} main.cpp
         colors.cpp
         position.cpp
         block.cpp
-        block.h
-        blocks.cpp)
+        blocks.cpp
+        game.cpp)
 target_link_libraries(${PROJECT_NAME} raylib)
 
 set(resources_list)

@@ -1,6 +1,7 @@
+#include <random>
 #include <raylib.h>
-#include "block.h"
-#include "grid.h"
+
+#include "game.h"
 
 int main()
 {
@@ -9,9 +10,7 @@ int main()
     constexpr int screenWidth = 300;
     constexpr int screenHeight = 600;
 
-    Grid grid;
-
-    auto block = IBlock();
+    Game game;
 
     InitWindow(screenWidth, screenHeight, "Tetris");
     SetTargetFPS(60);
@@ -21,8 +20,7 @@ int main()
         BeginDrawing();
         ClearBackground(darkBlue);
 
-        grid.Draw();
-        block.Draw();
+        game.Draw();
 
         EndDrawing();
     }

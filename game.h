@@ -7,12 +7,14 @@ class Game
 public:
 
     Game();
+    ~Game();
     void Draw();
     void handleInput();
     void moveBlockDown();
 
     bool gameOver = false;
     int score = 0;
+    Music music;
 
 private:
 

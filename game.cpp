@@ -5,6 +5,15 @@ Game::Game()
 {
     SetRandomSeed(static_cast<unsigned int>(time(nullptr)));
     Reset();
+    InitAudioDevice();
+    music = LoadMusicStream("resources/music.mp3");
+    PlayMusicStream(music);
+}
+
+Game::~Game()
+{
+    UnloadMusicStream(music);
+    CloseAudioDevice();
 }
 
 Block Game::getRandomBlock()

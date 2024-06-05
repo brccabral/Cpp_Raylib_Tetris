@@ -29,6 +29,8 @@ int main()
 
     while (!WindowShouldClose())
     {
+        UpdateMusicStream(game.music);
+
         game.handleInput();
         if (EventTriggered(0.2))
         {

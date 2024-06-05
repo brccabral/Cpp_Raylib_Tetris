@@ -39,3 +39,50 @@ bool Grid::IsCellEmpty(const int row, const int column) const
     }
     return false;
 }
+
+int Grid::ClearFullRows()
+{
+    int completed = 0;
+    for (int row = numRows - 1; row >= 0; --row)
+    {
+        if (IsRowFull(row))
+        {
+            ClearRow(row);
+            ++completed;
+        }
+        else if (completed > 0)
+        {
+            MoveRowDown(row, completed);
+        }
+    }
+    return completed;
+}
+
+bool Grid::IsRowFull(const int row) const
+{
+    for (int column = 0; column < numCols; ++column)
+    {
+        if (grid[row][column] == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Grid::ClearRow(const int row)
+{
+    for (int column = 0; column < numCols; ++column)
+    {
+        grid[row][column] = 0;
+    }
+}
+
+void Grid::MoveRowDown(const int row, const int rowsNum)
+{
+    for (int column = 0; column < numCols; ++column)
+    {
+        grid[row + rowsNum][column] = grid[row][column];
+        grid[row][column] = 0;
+    }
+}

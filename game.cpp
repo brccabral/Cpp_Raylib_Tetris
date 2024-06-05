@@ -11,7 +11,7 @@ Game::Game()
     nextBlock = getRandomBlock();
 }
 
-Block Game::getRandomBlock()
+Block Game::getRandomBlock() const
 {
     const int randomIndex = rand() % blocks.size();
     Block block = blocks[randomIndex];
@@ -22,4 +22,42 @@ void Game::Draw()
 {
     grid.Draw();
     currentBlock.Draw();
+}
+
+void Game::handleInput()
+{
+    int keyPressed = GetKeyPressed();
+    switch (keyPressed)
+    {
+        case KEY_LEFT:
+        {
+            moveBlockLeft();
+            break;
+        }
+        case KEY_RIGHT:
+        {
+            moveBlockRight();
+            break;
+        }
+        case KEY_DOWN:
+        {
+            moveBlockDown();
+            break;
+        }
+    }
+}
+
+void Game::moveBlockLeft()
+{
+    currentBlock.Move(0, -1);
+}
+
+void Game::moveBlockRight()
+{
+    currentBlock.Move(0, 1);
+}
+
+void Game::moveBlockDown()
+{
+    currentBlock.Move(1, 0);
 }

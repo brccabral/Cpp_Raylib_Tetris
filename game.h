@@ -7,8 +7,12 @@ class Game
 public:
 
     Game();
-    Block getRandomBlock();
+    Block getRandomBlock() const;
     void Draw();
+    void handleInput();
+    void moveBlockLeft();
+    void moveBlockRight();
+    void moveBlockDown();
     Grid grid;
 
 private:

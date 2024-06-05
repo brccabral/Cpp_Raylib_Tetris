@@ -17,6 +17,8 @@ int main()
 
     while (!WindowShouldClose())
     {
+        game.handleInput();
+
         BeginDrawing();
         ClearBackground(darkBlue);
 

@@ -3,6 +3,7 @@
 Block::Block() : cellSize(30), rotationState(0), rowOffset(0), columnOffset(0)
 {
     colors = getCellColors();
+    Move(0, 3);
 }
 
 void Block::Draw()

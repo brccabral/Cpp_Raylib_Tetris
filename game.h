@@ -7,7 +7,7 @@ class Game
 public:
 
     Game();
-    [[nodiscard]] Block getRandomBlock() const;
+    [[nodiscard]] Block getRandomBlock();
     void Draw();
     void handleInput();
     void moveBlockDown();
@@ -15,6 +15,7 @@ public:
 
 private:
 
+    static std::vector<Block> GetAllBlocks();
     void moveBlockLeft();
     void moveBlockRight();
     bool IsBlockOutside();

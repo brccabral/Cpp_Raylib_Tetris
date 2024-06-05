@@ -4,16 +4,27 @@
 Game::Game()
 {
     SetRandomSeed(static_cast<unsigned int>(time(nullptr)));
-    blocks = {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
+    blocks = GetAllBlocks();
     currentBlock = getRandomBlock();
     nextBlock = getRandomBlock();
 }
 
-Block Game::getRandomBlock() const
+Block Game::getRandomBlock()
 {
-    const int randomIndex = GetRandomValue(0, 6);
+    // loop through all blocks before repeating
+    if (blocks.empty())
+    {
+        blocks = GetAllBlocks();
+    }
+    const int randomIndex = GetRandomValue(0, 6) % static_cast<int>(blocks.size());
     Block block = blocks[randomIndex];
+    blocks.erase(blocks.begin() + randomIndex);
     return block;
+}
+
+std::vector<Block> Game::GetAllBlocks()
+{
+    return {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
 }
 
 void Game::Draw()

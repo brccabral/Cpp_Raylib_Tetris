@@ -29,7 +29,7 @@ int main()
     while (!WindowShouldClose())
     {
         game.handleInput();
-        if (EventTriggered(0.3))
+        if (EventTriggered(0.2))
         {
             game.moveBlockDown();
         }

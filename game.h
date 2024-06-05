@@ -11,7 +11,9 @@ public:
     void Draw();
     void handleInput();
     void moveBlockDown();
+
     Grid grid;
+    bool gameOver = false;
 
 private:
 

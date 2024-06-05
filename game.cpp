@@ -66,6 +66,10 @@ void Game::handleInput()
 
 void Game::moveBlockLeft()
 {
+    if (gameOver)
+    {
+        return;
+    }
     currentBlock.Move(0, -1);
     if (IsBlockOutside() || !BlockFits())
     {
@@ -75,6 +79,10 @@ void Game::moveBlockLeft()
 
 void Game::moveBlockRight()
 {
+    if (gameOver)
+    {
+        return;
+    }
     currentBlock.Move(0, 1);
     if (IsBlockOutside() || !BlockFits())
     {
@@ -84,6 +92,10 @@ void Game::moveBlockRight()
 
 void Game::moveBlockDown()
 {
+    if (gameOver)
+    {
+        return;
+    }
     currentBlock.Move(1, 0);
     if (IsBlockOutside() || !BlockFits())
     {
@@ -107,6 +119,10 @@ bool Game::IsBlockOutside()
 
 void Game::RotateBlock()
 {
+    if (gameOver)
+    {
+        return;
+    }
     currentBlock.Rotate();
     // avoid rotate to invalid position
     if (IsBlockOutside() || !BlockFits())
@@ -123,6 +139,10 @@ void Game::LockBlock()
         grid.grid[tile.row][tile.column] = currentBlock.id;
     }
     currentBlock = nextBlock;
+    if (!BlockFits())
+    {
+        gameOver = true;
+    }
     nextBlock = getRandomBlock();
     grid.ClearFullRows();
 }

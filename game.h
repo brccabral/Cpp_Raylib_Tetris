@@ -10,14 +10,15 @@ public:
     Block getRandomBlock() const;
     void Draw();
     void handleInput();
-    void moveBlockLeft();
-    void moveBlockRight();
-    void moveBlockDown();
     Grid grid;
 
 private:
 
+    void moveBlockLeft();
+    void moveBlockRight();
+    void moveBlockDown();
     bool IsBlockOutside();
+    void RotateBlock();
 
     std::vector<Block> blocks;
     Block currentBlock;

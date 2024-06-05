@@ -12,7 +12,7 @@ void Block::Draw()
 
     for (const Position tile: tiles)
     {
-        DrawRectangle(tile.column * cellSize + 1, tile.row * cellSize + 1, cellSize - 1, cellSize - 1, colors[id]);
+        DrawRectangle(tile.column * cellSize + 11, tile.row * cellSize + 11, cellSize - 1, cellSize - 1, colors[id]);
     }
 }
 

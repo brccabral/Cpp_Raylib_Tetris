@@ -16,8 +16,6 @@ bool EventTriggered(const double interval)
 
 int main()
 {
-    constexpr Color darkBlue{44, 44, 127, 255};
-
     constexpr int screenWidth = 500;
     constexpr int screenHeight = 620;
 
@@ -39,7 +37,17 @@ int main()
         BeginDrawing();
         ClearBackground(darkBlue);
 
-        DrawTextEx(font, "Score", {365, 50}, 38, 2, RAYWHITE);
+        DrawTextEx(font, "Score", {365, 15}, 38, 2, RAYWHITE);
+        DrawRectangleRounded({320, 55, 170, 60}, 0.3f, 6, lightBlue);
+
+        DrawTextEx(font, "Next", {370, 175}, 38, 2, RAYWHITE);
+        DrawRectangleRounded({320, 215, 170, 180}, 0.3f, 6, lightBlue);
+
+        if (game.gameOver)
+        {
+            DrawTextEx(font, "GAME OVER", {320, 450}, 38, 2, RAYWHITE);
+        }
+
         game.Draw();
 
         EndDrawing();

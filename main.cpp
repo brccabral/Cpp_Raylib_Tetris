@@ -11,7 +11,8 @@ int main()
 
     Grid grid;
 
-    auto block = LBlock();
+    auto block = TBlock();
+    block.Move(4, 3);
 
     InitWindow(screenWidth, screenHeight, "Tetris");
     SetTargetFPS(60);

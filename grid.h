@@ -10,6 +10,7 @@ public:
 
     void Draw() const;
     [[nodiscard]] bool IsCellOutside(int row, int column) const;
+    [[nodiscard]] bool IsCellEmpty(int row, int column) const;
 
     int grid[20][20] = {};
 

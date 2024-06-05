@@ -30,3 +30,12 @@ bool Grid::IsCellOutside(const int row, const int column) const
     }
     return true;
 }
+
+bool Grid::IsCellEmpty(const int row, const int column) const
+{
+    if (grid[row][column] == 0)
+    {
+        return true;
+    }
+    return false;
+}

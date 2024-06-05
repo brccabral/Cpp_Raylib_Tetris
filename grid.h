@@ -8,8 +8,8 @@ public:
 
     Grid();
 
-    void Draw();
-    bool IsCellOutside(int row, int column);
+    void Draw() const;
+    [[nodiscard]] bool IsCellOutside(int row, int column) const;
 
     int grid[20][20] = {};
 

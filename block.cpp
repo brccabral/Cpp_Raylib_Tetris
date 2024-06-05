@@ -16,7 +16,7 @@ void Block::Draw()
     }
 }
 
-void Block::Move(int rows, int columns)
+void Block::Move(const int rows, const int columns)
 {
     rowOffset += rows;
     columnOffset += columns;
@@ -48,6 +48,6 @@ void Block::UndoRotate()
     rotationState--;
     if (rotationState < 0)
     {
-        rotationState = cells.size() - 1;
+        rotationState = static_cast<int>(cells.size()) - 1;
     }
 }

@@ -24,8 +24,7 @@ void Game::Draw()
 
 void Game::handleInput()
 {
-    int keyPressed = GetKeyPressed();
-    switch (keyPressed)
+    switch (GetKeyPressed())
     {
         case KEY_LEFT:
         {
@@ -45,6 +44,10 @@ void Game::handleInput()
         case KEY_UP:
         {
             RotateBlock();
+            break;
+        }
+        default:
+        {
             break;
         }
     }

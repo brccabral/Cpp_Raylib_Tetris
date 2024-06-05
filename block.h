@@ -16,7 +16,7 @@ public:
     void Rotate();
     void UndoRotate();
 
-    int id;
+    int id = 0;
     std::map<int, std::vector<Position>> cells;
 
 private:

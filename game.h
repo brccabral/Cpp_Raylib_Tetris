@@ -7,7 +7,7 @@ class Game
 public:
 
     Game();
-    Block getRandomBlock() const;
+    [[nodiscard]] Block getRandomBlock() const;
     void Draw();
     void handleInput();
     void moveBlockDown();

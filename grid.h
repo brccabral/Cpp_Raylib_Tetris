@@ -9,6 +9,7 @@ public:
     Grid();
 
     void Draw();
+    bool IsCellOutside(int row, int column);
 
     int grid[20][20] = {};
 

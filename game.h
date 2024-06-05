@@ -10,13 +10,13 @@ public:
     Block getRandomBlock() const;
     void Draw();
     void handleInput();
+    void moveBlockDown();
     Grid grid;
 
 private:
 
     void moveBlockLeft();
     void moveBlockRight();
-    void moveBlockDown();
     bool IsBlockOutside();
     void RotateBlock();
 

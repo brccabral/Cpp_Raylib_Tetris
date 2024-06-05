@@ -1,6 +1,5 @@
 #include <random>
 #include <raylib.h>
-
 #include "game.h"
 
 int main()
@@ -18,6 +17,7 @@ int main()
     while (!WindowShouldClose())
     {
         game.handleInput();
+        game.moveBlockDown();
 
         BeginDrawing();
         ClearBackground(darkBlue);

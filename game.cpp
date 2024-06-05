@@ -1,11 +1,9 @@
 #include "game.h"
-
 #include <ctime>
-#include <random>
 
 Game::Game()
 {
-    std::srand((unsigned int) time(0));
+    SetRandomSeed(static_cast<unsigned int>(time(nullptr)));
     blocks = {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
     currentBlock = getRandomBlock();
     nextBlock = getRandomBlock();
@@ -13,7 +11,7 @@ Game::Game()
 
 Block Game::getRandomBlock() const
 {
-    const int randomIndex = rand() % blocks.size();
+    const int randomIndex = GetRandomValue(0, 6);
     Block block = blocks[randomIndex];
     return block;
 }

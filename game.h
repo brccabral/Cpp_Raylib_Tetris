@@ -14,6 +14,7 @@ public:
 
     Grid grid;
     bool gameOver = false;
+    int score = 0;
 
 private:
 
@@ -25,6 +26,7 @@ private:
     void LockBlock();
     bool BlockFits();
     void Reset();
+    void UpdateScore(int linesCleared, int moveDownPoints);
 
     std::vector<Block> blocks;
     Block currentBlock;

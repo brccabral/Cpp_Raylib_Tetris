@@ -1,3 +1,4 @@
+#include <iostream>
 #include <raylib.h>
 #include "game.h"
 
@@ -39,6 +40,11 @@ int main()
 
         DrawTextEx(font, "Score", {365, 15}, 38, 2, RAYWHITE);
         DrawRectangleRounded({320, 55, 170, 60}, 0.3f, 6, lightBlue);
+
+        char scoreText[10];
+        sprintf(scoreText, "%d", game.score);
+        const auto [scoreX, scoreY] = MeasureTextEx(font, scoreText, 38, 2);
+        DrawTextEx(font, scoreText, {320 + (170 - scoreX) / 2, 65}, 38, 2, RAYWHITE);
 
         DrawTextEx(font, "Next", {370, 175}, 38, 2, RAYWHITE);
         DrawRectangleRounded({320, 215, 170, 180}, 0.3f, 6, lightBlue);

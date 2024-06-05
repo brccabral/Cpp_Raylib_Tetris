@@ -54,6 +54,7 @@ void Game::handleInput()
         case KEY_DOWN:
         {
             moveBlockDown();
+            UpdateScore(0, 1);
             break;
         }
         case KEY_UP:
@@ -148,7 +149,8 @@ void Game::LockBlock()
         gameOver = true;
     }
     nextBlock = getRandomBlock();
-    grid.ClearFullRows();
+    const int rowsCleared = grid.ClearFullRows();
+    UpdateScore(rowsCleared, 0);
 }
 
 bool Game::BlockFits()
@@ -170,4 +172,33 @@ void Game::Reset()
     blocks = GetAllBlocks();
     currentBlock = getRandomBlock();
     nextBlock = getRandomBlock();
+    score = 0;
+}
+
+void Game::UpdateScore(const int linesCleared, const int moveDownPoints)
+{
+    switch (linesCleared)
+    {
+        case 1:
+        {
+            score += 100;
+            break;
+        }
+        case 2:
+        {
+            score += 300;
+            break;
+        }
+        case 3:
+        {
+            score += 500;
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+
+    score += moveDownPoints;
 }

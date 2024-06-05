@@ -4,9 +4,7 @@
 Game::Game()
 {
     SetRandomSeed(static_cast<unsigned int>(time(nullptr)));
-    blocks = GetAllBlocks();
-    currentBlock = getRandomBlock();
-    nextBlock = getRandomBlock();
+    Reset();
 }
 
 Block Game::getRandomBlock()
@@ -16,7 +14,7 @@ Block Game::getRandomBlock()
     {
         blocks = GetAllBlocks();
     }
-    const int randomIndex = GetRandomValue(0, 6) % static_cast<int>(blocks.size());
+    const int randomIndex = GetRandomValue(0, 7) % static_cast<int>(blocks.size());
     Block block = blocks[randomIndex];
     blocks.erase(blocks.begin() + randomIndex);
     return block;
@@ -35,7 +33,13 @@ void Game::Draw()
 
 void Game::handleInput()
 {
-    switch (GetKeyPressed())
+    const int keyPressed = GetKeyPressed();
+    if (gameOver && keyPressed != 0)
+    {
+        gameOver = false;
+        Reset();
+    }
+    switch (keyPressed)
     {
         case KEY_LEFT:
         {
@@ -158,4 +162,12 @@ bool Game::BlockFits()
         }
     }
     return true;
+}
+
+void Game::Reset()
+{
+    grid.Initialize();
+    blocks = GetAllBlocks();
+    currentBlock = getRandomBlock();
+    nextBlock = getRandomBlock();
 }

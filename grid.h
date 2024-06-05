@@ -12,6 +12,7 @@ public:
     [[nodiscard]] bool IsCellOutside(int row, int column) const;
     [[nodiscard]] bool IsCellEmpty(int row, int column) const;
     int ClearFullRows();
+    void Initialize();
 
     int grid[20][20] = {};
 

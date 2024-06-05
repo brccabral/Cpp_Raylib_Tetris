@@ -7,6 +7,7 @@ Grid::Grid()
     numCols = 10;
     cellSize = 30;
     colors = getCellColors();
+    Initialize();
 }
 
 void Grid::Draw() const
@@ -56,6 +57,17 @@ int Grid::ClearFullRows()
         }
     }
     return completed;
+}
+
+void Grid::Initialize()
+{
+    for (int row = 0; row < numRows; row++)
+    {
+        for (int column = 0; column < numCols; column++)
+        {
+            grid[row][column] = 0;
+        }
+    }
 }
 
 bool Grid::IsRowFull(const int row) const

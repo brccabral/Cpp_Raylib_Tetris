@@ -20,12 +20,12 @@ int main()
     constexpr int screenWidth = 500;
     constexpr int screenHeight = 620;
 
-    Game game;
 
     InitWindow(screenWidth, screenHeight, "Tetris");
     SetTargetFPS(60);
 
-    const Font font = LoadFontEx("resources/monogram.ttf", 64, nullptr, 0);
+    Game game;
+    const Font font = LoadFontEx("resources/Font/monogram.ttf", 64, nullptr, 0);
 
     while (!WindowShouldClose())
     {

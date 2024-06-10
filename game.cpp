@@ -6,10 +6,10 @@ Game::Game()
     SetRandomSeed(static_cast<unsigned int>(time(nullptr)));
     Reset();
     InitAudioDevice();
-    music = LoadMusicStream("resources/music.mp3");
+    music = LoadMusicStream("resources/Sounds/music.ogg");
+    rotateSound = LoadSound("resources/Sounds/rotate.ogg");
+    clearSound = LoadSound("resources/Sounds/clear.ogg");
     PlayMusicStream(music);
-    rotateSound = LoadSound("resources/rotate.mp3");
-    clearSound = LoadSound("resources/clear.mp3");
 }
 
 Game::~Game()

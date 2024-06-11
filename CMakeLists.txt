@@ -1,11 +1,9 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.20)
 project(Tetris)
 
 include(GNUInstallDirs)
 
 set(CMAKE_CXX_STANDARD 17)
-
-find_package(raylib 2.0 REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp
         grid.cpp
@@ -17,11 +15,17 @@ add_executable(${PROJECT_NAME} main.cpp
 target_link_libraries(${PROJECT_NAME} raylib)
 install(TARGETS ${PROJECT_NAME})
 
+if (WIN32)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${RAYLIB_PATH}/include)
+    target_link_directories(${PROJECT_NAME} PRIVATE ${RAYLIB_PATH}/lib)
+    target_link_libraries(${PROJECT_NAME} gdi32 msvcrt winmm)
+    set(COMPILE_FLAGS "/NODEFAULTLIB:libcmt")
+endif ()
+
 # copy resources to Build folder for debugging
-set(resources_list)
-file(GLOB resources_files resources/*)
-list(APPEND resources_list ${resources_files})
-file(COPY ${resources_files} DESTINATION "resources/")
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+)
 
 # copy resources to Install location
 install(DIRECTORY

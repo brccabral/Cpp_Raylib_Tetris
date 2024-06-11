@@ -1,6 +1,8 @@
 build/
+build_dir/
 build_release/
 install/
 resources/
 
 .idea/
+.vscode/

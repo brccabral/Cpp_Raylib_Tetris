@@ -8,12 +8,12 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(raylib REQUIRED)
 
 add_executable(${PROJECT_NAME} main.cpp
-        grid.cpp
-        colors.cpp
-        position.cpp
-        block.cpp
-        blocks.cpp
-        game.cpp)
+               grid.cpp
+               colors.cpp
+               position.cpp
+               block.cpp
+               blocks.cpp
+               game.cpp)
 target_link_libraries(${PROJECT_NAME} raylib)
 install(TARGETS ${PROJECT_NAME})
 
@@ -23,9 +23,21 @@ if (WIN32)
 endif ()
 
 # copy resources to Build folder for debugging
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
+add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/resources $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
 )
+
+if (EMSCRIPTEN)
+    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .html)
+    target_link_options(${PROJECT_NAME}
+                        PRIVATE
+                        -sALLOW_MEMORY_GROWTH=1
+                        -sUSE_GLFW=3
+                        -sEXPORTED_RUNTIME_METHODS=[requestFullscreen]
+                        --preload-file resources
+                        --shell-file $ENV{EMSCRIPTEN}/src/shell_brc.html
+    )
+endif ()
 
 # copy resources to Install location
 install(DIRECTORY

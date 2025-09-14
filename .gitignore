@@ -3,7 +3,6 @@ build_dir/
 build_win/
 build_release/
 install/
-resources/
 
 .idea/
 .vscode/
